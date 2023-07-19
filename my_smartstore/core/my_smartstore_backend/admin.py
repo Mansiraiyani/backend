@@ -1,7 +1,7 @@
 from django.contrib import admin
 from django.contrib.admin import register
 
-from my_smartstore_backend.models import User, Otp, Token, PasswordResetToken
+from my_smartstore_backend.models import User, Otp, Token
 
 
 # Register your models here.
@@ -18,7 +18,7 @@ class TokenAdmin(admin.ModelAdmin):
     list_display = ['token','user','created_at']
 
 
-@register(PasswordResetToken)
-class PasswordResetTokenAdmin(admin.ModelAdmin):
-    list_display = ['token','user','validity','created_at']
-
+# @register(PasswordResetToken)
+# class PasswordResetTokenAdmin(admin.ModelAdmin):
+#     list_display = ['token','user','validity','created_at']
+#

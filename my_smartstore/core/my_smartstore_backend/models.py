@@ -31,11 +31,11 @@ class Token(models.Model):
     def __str__(self):
         return self.user.email
 
-class PasswordResetToken(models.Model):
-    token = models.CharField(max_length=5000)
-    user = models.ForeignKey(User,on_delete=models.CASCADE,related_name="password_reset_token_set")
-    created_at=models.DateTimeField(auto_now_add=True)
-    validity = models.DateTimeField()
-
-    def __str__(self):
-        return self.user.email
+# class PasswordResetToken(models.Model):
+#     token = models.CharField(max_length=5000)
+#     user = models.ForeignKey(User,on_delete=models.CASCADE,related_name="password_reset_token_set")
+#     created_at=models.DateTimeField(auto_now_add=True)
+#     validity = models.DateTimeField()
+#
+#     def __str__(self):
+#         return self.user.email

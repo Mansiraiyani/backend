@@ -6,7 +6,7 @@ from rest_framework.decorators import api_view
 from rest_framework.response import Response
 
 from my_smartstore_backend.models import User, Otp
-from my_smartstore_backend.utils import send_otp, token_response, send_password_reset_email
+from my_smartstore_backend.utils import send_otp, token_response
 
 
 # Create your views here.
@@ -73,10 +73,15 @@ def login(request):
     else:
         return Response('incorrect password!')
 
+# @api_view(['POST'])
+# def password_reset_email(request):
+#     email = request.data.get('email')
+#     if not email:
+#         return Response("Email is missing",400)
+#     user = get_object_or_404(User,email=email)
+#     return send_password_reset_email(user)
+
 @api_view(['POST'])
-def password_reset_email(request):
-    email = request.data.get('email')
-    if not email:
-        return Response("Email is missing",400)
-    user = get_object_or_404(User,email=email)
-    return send_password_reset_email(user)
+@permission_classes([IsAuthenticatedUser])
+def userdata(request):
+    return Response()

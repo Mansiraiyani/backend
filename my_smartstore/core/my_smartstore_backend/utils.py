@@ -4,7 +4,7 @@ from random import randint
 
 from rest_framework.response import Response
 
-from my_smartstore_backend.models import Otp, Token, PasswordResetToken
+from my_smartstore_backend.models import Otp, Token
 
 
 def send_otp(phone):
@@ -25,7 +25,7 @@ def token_response(user):
     Token.objects.create(token=token,user=user)
     return Response('Token '+token)
 
-def send_password_reset_email(user):
-    token = new_token()
-    exp_time=datetime.datetime.now() + datetime.timedelta(minutes=10)
-    PasswordResetToken.objects.update_or_create(user=user,defaults={'user':user,'token':token,'validity':exp_time})
+# def send_password_reset_email(user):
+#     token = new_token()
+#     exp_time=datetime.datetime.now() + datetime.timedelta(minutes=10)
+#     PasswordResetToken.objects.update_or_create(user=user,defaults={'user':user,'token':token,'validity':exp_time})
