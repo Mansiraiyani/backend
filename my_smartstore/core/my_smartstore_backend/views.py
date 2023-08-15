@@ -2,7 +2,7 @@ import datetime
 
 from django.contrib.auth.hashers import make_password, check_password
 from django.shortcuts import render, get_object_or_404
-from rest_framework.decorators import api_view
+from rest_framework.decorators import api_view, permission_classes
 from rest_framework.response import Response
 
 from my_smartstore_backend.models import User, Otp
@@ -80,6 +80,10 @@ def login(request):
 #         return Response("Email is missing",400)
 #     user = get_object_or_404(User,email=email)
 #     return send_password_reset_email(user)
+
+class IsAuthenticatedUser:
+    pass
+
 
 @api_view(['POST'])
 @permission_classes([IsAuthenticatedUser])
